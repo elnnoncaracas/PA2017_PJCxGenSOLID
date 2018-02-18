@@ -10,6 +10,12 @@ namespace ConxGenSOLID
     {
         static void Main(string[] args)
         {
+
+            MenuOpciones men = new MenuOpciones();
+            men.mostrar();
+            Console.Read();
+            ConInit.Despelote();
+
         }
     }
 }

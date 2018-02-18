@@ -17,9 +17,10 @@ namespace ConxGenSOLID
         static DbCommand cmd;
         static string proveedordb = "System.Data.SqlClient";
         static string connString = @"Data Source=DESKTOP-8MI8C4P;Initial Catalog=DBCONFIG_E;Integrated Security=True";
-        public string cmdTxt;
+        static string cmdTxt = "select * from SQUERIES";
 
         public static void Despelote() {
+            
             DbProviderFactory ConFab = DbProviderFactories.GetFactory(proveedordb);
             conx = ConFab.CreateConnection();
             conx.ConnectionString = connString;
@@ -27,7 +28,19 @@ namespace ConxGenSOLID
 
                 conx.Open();
                 Console.WriteLine("Estado de la Conexion: "+conx.State);
+                cmd = conx.CreateCommand();
+                cmd.CommandText = cmdTxt;
+                cmd.CommandType = CommandType.Text;
+                DbDataReader dbdr = null;
+                dbdr = cmd.ExecuteReader();
+                while (dbdr.Read()) {
 
+                    for (int i = 0; i<dbdr.FieldCount;i++) {
+
+                        Console.WriteLine(dbdr.GetName(i) + ": " + dbdr.GetValue(i)+"\n");
+                    }
+
+                }
             }
             catch (Exception ex)
             {
