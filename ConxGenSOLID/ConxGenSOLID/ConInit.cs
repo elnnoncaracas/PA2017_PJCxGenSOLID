@@ -13,8 +13,8 @@ namespace ConxGenSOLID
 {
     class ConInit
     {
-        static DbConnection conx;
-        static DbCommand cmd;
+        public static DbConnection conx;
+        public static DbCommand cmd;
         static string proveedordb = "System.Data.SqlClient";
         static string connString = @"Data Source=DESKTOP-8MI8C4P;Initial Catalog=DBCONFIG_E;Integrated Security=True";
         static string cmdTxt = "select * from SQUERIES";

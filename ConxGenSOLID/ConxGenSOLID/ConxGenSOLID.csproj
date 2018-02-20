@@ -50,8 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConCloser.cs" />
     <Compile Include="ConInit.cs" />
-    <Compile Include="ConxMgr.cs" />
+    <Compile Include="InitConexion.cs" />
     <Compile Include="MenuOpciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
