@@ -23,6 +23,7 @@ namespace ConxGenSOLID
             {
                 conex.Close();
                 Console.WriteLine("Estado de la Conexion: " + conex.State);
+                Console.Read();
 
 
             }

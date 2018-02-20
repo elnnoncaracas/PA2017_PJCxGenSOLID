@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConCloser.cs" />
+    <Compile Include="ConCommander.cs" />
     <Compile Include="ConInit.cs" />
     <Compile Include="InitConexion.cs" />
     <Compile Include="MenuOpciones.cs" />
