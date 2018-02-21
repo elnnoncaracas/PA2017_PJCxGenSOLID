@@ -11,14 +11,15 @@ using Mono.Security;
 
 namespace ConxGenSOLID
 {
-    class ConCommander:InitConexion
+    class ConCommander : InitConexion
     {
         public static DbCommand mycommand;
         public string CommTxt { get; set; }
         public static DbDataReader dbdr;
 
-        public void consultaR(string comtext) {
-
+        public void consultaR(string comtext)
+        {
+            //string oye;
             CommTxt = comtext;
 
             mycommand = conex.CreateCommand();
@@ -35,6 +36,9 @@ namespace ConxGenSOLID
 
                     Console.WriteLine(dbdr.GetName(i) + ": " + dbdr.GetValue(i) + "\n");
                 }
+
+                //object result = dr.GetValue(0);                     
+                //Console.WriteLine("{0}", result.ToString());
 
             }
         }
