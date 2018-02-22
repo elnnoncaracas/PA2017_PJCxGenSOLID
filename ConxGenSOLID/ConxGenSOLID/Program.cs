@@ -11,7 +11,7 @@ namespace ConxGenSOLID
         static void Main(string[] args)
         {
 
-
+            /*INICIANDO LA CONEXION A LA BD*/
             InitConexion Conectar = new InitConexion();
             ConCloser Desconectar = new ConCloser();
             ConCommander Comandeishon = new ConCommander();
@@ -19,8 +19,16 @@ namespace ConxGenSOLID
             Console.Read();
             Comandeishon.consultaR(@"SELECT NOMBREPROV, CADENA FROM PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID WHERE CID = 1");
             Desconectar.conxcloser();
-            Conectar.ConectarDB(@"Server =baasu.db.elephantsql.com; Port = 5432; Database = oxlrtoxo; User Id = oxlrtoxo; Password =   MJMV0caqyufWcjuMNSqda_dIw-wMgHrO", "Npgsql");/*POSTGRE_SQL*/
-            Comandeishon.consultaR(@"SELECT NOMBREPROV, CADENA FROM PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID");
+            /*OBTENIENDO SQL QUERY PARA CONSULTAR LA SEGUNDA DB*/
+            Conectar.ConectarDB(@"Server =baasu.db.elephantsql.com; Port = 5432; Database = oxlrtoxo; User Id = oxlrtoxo; Password = MJMV0caqyufWcjuMNSqda_dIw-wMgHrO", "Npgsql");/*POSTGRESQL*/
+            Console.Read();
+            Comandeishon.consultaR(@"SELECT NOMBREPROV, CADENA FROM PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID WHERE CID = 2");
+            Desconectar.conxcloser();
+
+            /*CONECTANDO LA SEGUNDA BD*/
+            Conectar.ConectarDB(ConCommander.var1.ToString(), ConCommander.var2.ToString());/*Realizando Conexion Generica*/
+            //Comandeishon.consultaR(@"SELECT NOMBRE,APELLIDO,NPUESTO,SALARIO FROM EMPLEADO INNER JOIN SUELDOS ON EMPLEADO.FKPTRAB = SUELDOS.SPID WHERE NPUESTO = 'VENDEDOR'");
+            Comandeishon.consultaR(@"SELECT*FROM EMPLEADO");
             Console.Read();
             Desconectar.conxcloser();
             Console.Read();

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommSegundo.cs" />
     <Compile Include="ConCloser.cs" />
     <Compile Include="ConCommander.cs" />
     <Compile Include="InitConexion.cs" />
