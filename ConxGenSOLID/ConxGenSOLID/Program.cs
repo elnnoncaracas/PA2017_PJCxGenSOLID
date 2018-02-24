@@ -16,15 +16,13 @@ namespace ConxGenSOLID
             ConCloser Desconectar = new ConCloser();
             ConCommander Comandeishon = new ConCommander();
             CommSegundo segcomando = new CommSegundo();
-            ImprimirDread imp = new ImprimirDread();
             Conectar.ConectarDB(@"Data Source=DESKTOP-8MI8C4P;Initial Catalog=DBCONFIG_E;Integrated Security=True", "System.Data.SqlClient");/*MS-SQL SERVER*/
-            Comandeishon.consultaR(@"SELECT NOMBREPROV,CADENA,NCONSULTA FROM ((PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID) INNER JOIN SQUERIES ON SQUERIES.ID = CADENACONECT.CID) WHERE CID = 1");
+            Comandeishon.consultaR(@"SELECT NOMBREPROV,CADENA,NCONSULTA FROM ((PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID) INNER JOIN SQUERIES ON SQUERIES.ID = CADENACONECT.CID) WHERE CID = 2");
             Desconectar.conxcloser();
             /*OBTENIENDO SQL QUERY PARA CONSULTAR LA SEGUNDA DB*/
             Conectar.ConectarDB(ConCommander.miarray[1].ToString(), ConCommander.miarray[0].ToString());/*POSTGRESQL*/
             segcomando.secreader(ConCommander.miarray[2].ToString());
             Desconectar.conxcloser();
-            imp.imprime();
             /*MI CODIGO -- FIN*/
             //Comandeishon.consultaR(@"SELECT NOMBRE,APELLIDO,NPUESTO,SALARIO FROM EMPLEADO INNER JOIN SUELDOS ON EMPLEADO.FKPTRAB = SUELDOS.SPID WHERE NPUESTO = 'VENDEDOR'");
             Console.Read();

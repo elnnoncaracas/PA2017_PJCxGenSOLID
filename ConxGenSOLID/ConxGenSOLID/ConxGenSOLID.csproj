@@ -53,7 +53,6 @@
     <Compile Include="CommSegundo.cs" />
     <Compile Include="ConCloser.cs" />
     <Compile Include="ConCommander.cs" />
-    <Compile Include="ImprimirDread.cs" />
     <Compile Include="InitConexion.cs" />
     <Compile Include="MenuOpciones.cs" />
     <Compile Include="Program.cs" />

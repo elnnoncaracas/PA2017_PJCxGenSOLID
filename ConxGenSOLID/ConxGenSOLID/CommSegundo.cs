@@ -8,36 +8,38 @@ using System.Data.Common;
 
 namespace ConxGenSOLID
 {
-
-    class CommSegundo : ConCommander
+    class CommSegundo : InitConexion
     {
-        public static DbDataReader secdr { get; set; }
 
+        public string secCommTxt { get; set; }
+        public static DbDataReader secrd;
+        public static DbCommand secCommand;
+        public static object[] extract;
         public void secreader(string othercomm)
         {
-            CommTxt = othercomm;
+            secCommTxt = othercomm;
 
-            mycommand = conex.CreateCommand();
-            mycommand.CommandText = othercomm;
-            mycommand.CommandType = CommandType.Text;
-            secdr = null;
+            secCommand = conex.CreateCommand();
+            secCommand.CommandText = othercomm;
+            secCommand.CommandType = CommandType.Text;
+            secrd = null;
 
-            secdr = mycommand.ExecuteReader();
-
-
-            object[] Oarray = new object[secdr.FieldCount];
-            while (secdr.Read())
+            secrd = secCommand.ExecuteReader();
+            extract = new object[secrd.FieldCount];
+            while (secrd.Read())
             {
 
-                for (int i = 0; i < dbdr.FieldCount; i++)
+                for (int i = 0; i < secrd.FieldCount; i++)
                 {
-
-                    Oarray[i] = dbdr.GetValue(i);
-                    Console.WriteLine(Oarray[i]);   
-
+                    Console.WriteLine(extract[i] = secrd.GetValue(i).ToString());
                 }
 
             }
+
+
         }
+
     }
+
 }
+/*TRABAJO ELABORADO POR ELNNON CARACAS - CLASE DE PROGRAMACION AVANZADA - FECHA ENTREGA 25 DE FEBRERO DE 2018*/
