@@ -10,28 +10,25 @@ namespace ConxGenSOLID
     {
         static void Main(string[] args)
         {
-
             /*INICIANDO LA CONEXION A LA BD*/
+            /*MI CODIGO -- INICIO*/
             InitConexion Conectar = new InitConexion();
             ConCloser Desconectar = new ConCloser();
             ConCommander Comandeishon = new ConCommander();
+            CommSegundo segcomando = new CommSegundo();
+            ImprimirDread imp = new ImprimirDread();
             Conectar.ConectarDB(@"Data Source=DESKTOP-8MI8C4P;Initial Catalog=DBCONFIG_E;Integrated Security=True", "System.Data.SqlClient");/*MS-SQL SERVER*/
-            Console.Read();
-            Comandeishon.consultaR(@"SELECT NOMBREPROV, CADENA FROM PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID WHERE CID = 1");
+            Comandeishon.consultaR(@"SELECT NOMBREPROV,CADENA,NCONSULTA FROM ((PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID) INNER JOIN SQUERIES ON SQUERIES.ID = CADENACONECT.CID) WHERE CID = 1");
             Desconectar.conxcloser();
             /*OBTENIENDO SQL QUERY PARA CONSULTAR LA SEGUNDA DB*/
-            Conectar.ConectarDB(@"Server =baasu.db.elephantsql.com; Port = 5432; Database = oxlrtoxo; User Id = oxlrtoxo; Password = MJMV0caqyufWcjuMNSqda_dIw-wMgHrO", "Npgsql");/*POSTGRESQL*/
-            Console.Read();
-            Comandeishon.consultaR(@"SELECT NOMBREPROV, CADENA FROM PROVEEDORES INNER JOIN CADENACONECT ON PROVEEDORES.ID = CADENACONECT.CID WHERE CID = 2");
+            Conectar.ConectarDB(ConCommander.miarray[1].ToString(), ConCommander.miarray[0].ToString());/*POSTGRESQL*/
+            segcomando.secreader(ConCommander.miarray[2].ToString());
             Desconectar.conxcloser();
-
-            /*CONECTANDO LA SEGUNDA BD*/
-            Conectar.ConectarDB(ConCommander.var1.ToString(), ConCommander.var2.ToString());/*Realizando Conexion Generica*/
+            imp.imprime();
+            /*MI CODIGO -- FIN*/
             //Comandeishon.consultaR(@"SELECT NOMBRE,APELLIDO,NPUESTO,SALARIO FROM EMPLEADO INNER JOIN SUELDOS ON EMPLEADO.FKPTRAB = SUELDOS.SPID WHERE NPUESTO = 'VENDEDOR'");
-            Comandeishon.consultaR(@"SELECT*FROM EMPLEADO");
             Console.Read();
-            Desconectar.conxcloser();
-            Console.Read();
+            /*CONSULTANDO LA SEGUNDA BD*/
 
 
 

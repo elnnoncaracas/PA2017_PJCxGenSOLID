@@ -16,7 +16,7 @@ namespace ConxGenSOLID
         public static DbCommand mycommand;
         public string CommTxt { get; set; }
         public static DbDataReader dbdr;
-        public static object var1, var2;
+        public static object[] miarray = new object[3];
         public void consultaR(string comtext)
         {
             //string oye;
@@ -26,20 +26,18 @@ namespace ConxGenSOLID
             mycommand.CommandText = comtext;
             mycommand.CommandType = CommandType.Text;
             dbdr = null;
-            dbdr = mycommand.ExecuteReader();
-          
 
+            dbdr = mycommand.ExecuteReader();
+
+            
             while (dbdr.Read())
             {
+              
 
-
-
-                var1 = dbdr.GetValue(1);
-                var2 = dbdr.GetValue(0);
-               
-
-                for (int i = 0; i <dbdr.FieldCount; i++)
+                for (int i = 0; i < dbdr.FieldCount; i++)
                 {
+                   
+                    miarray[i] = dbdr.GetValue(i);
                     Console.WriteLine(dbdr.GetValue(i));
                 }
 
